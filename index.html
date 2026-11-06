@@ -146,8 +146,20 @@
             <h2 id="result-title">A little insight<br>starts here.</h2>
             <p id="result-description">Complete your check-in to see your predicted mental health score.</p>
             <div id="score-display" class="score-display" hidden>
-              <span id="score-value" class="score-value">—</span>
-              <span class="score-label">predicted score</span>
+              <div id="score-gauge" class="score-gauge" role="progressbar" aria-label="Predicted mental health score" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" aria-valuetext="Not yet calculated">
+                <svg viewBox="0 0 112 112" aria-hidden="true">
+                  <circle class="score-ring-track" cx="56" cy="56" r="46"></circle>
+                  <circle id="score-ring" class="score-ring" cx="56" cy="56" r="46"></circle>
+                </svg>
+                <div class="gauge-reading" aria-hidden="true">
+                  <span id="score-value" class="score-value">—</span>
+                  <span class="gauge-denominator">/ 10</span>
+                </div>
+              </div>
+              <div class="score-caption">
+                <span class="score-label">Predicted mental health score</span>
+                <span class="score-scale">Model estimate on a 0–10 scale</span>
+              </div>
             </div>
             <div class="result-rule"></div>
             <p class="result-disclaimer">A model-generated estimate cannot replace professional advice or a clinical assessment.</p>

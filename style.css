@@ -85,9 +85,20 @@ h1, h2, h3, p { margin-top: 0; }
 .result-orb { position: relative; z-index: 1; width: 44px; height: 44px; display: grid; place-items: center; margin-bottom: 22px; border-radius: 14px; color: var(--green); background: rgba(255,255,255,.72); font-size: 23px; }
 .result-card h2 { position: relative; z-index: 1; margin: 11px 0 9px; font: 700 22px/1.28 'Segoe UI', Arial, sans-serif; letter-spacing: -.7px; }
 .result-card > p:not(.result-disclaimer) { position: relative; z-index: 1; margin: 0; color: #75847b; font-size: 12px; line-height: 1.7; }
-.score-display { position: relative; z-index: 1; display: flex; align-items: baseline; gap: 10px; margin: 15px 0 18px; }
-.score-value { color: var(--green-dark); font: 800 48px/1 'Segoe UI', Arial, sans-serif; letter-spacing: -2px; }
-.score-label { color: #75847b; font-size: 11px; }
+.score-display { position: relative; z-index: 1; display: flex; align-items: center; gap: 17px; margin: 17px 0 20px; }
+.score-display[hidden] { display: none; }
+.score-gauge { position: relative; flex: 0 0 112px; width: 112px; height: 112px; }
+.score-gauge svg { width: 100%; height: 100%; overflow: visible; }
+.score-ring-track, .score-ring { fill: none; stroke-width: 8; }
+.score-ring-track { stroke: rgba(46, 118, 95, .13); }
+.score-ring { stroke: var(--green); stroke-linecap: round; stroke-dasharray: 289.03; stroke-dashoffset: 289.03; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset .9s cubic-bezier(.2, .7, .2, 1); }
+.gauge-reading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.score-value { color: var(--green-dark); font: 800 29px/1 'Segoe UI', Arial, sans-serif; letter-spacing: -1.5px; }
+.gauge-denominator { margin-top: 4px; color: #75847b; font-size: 11px; }
+.score-caption { display: grid; gap: 6px; }
+.score-label { color: #40594d; font-size: 11px; font-weight: 700; line-height: 1.45; }
+.score-scale { color: #75847b; font-size: 10px; line-height: 1.5; }
+.result-card.is-ready { border-color: rgba(46, 118, 95, .2); box-shadow: 0 12px 32px rgba(34, 91, 67, .1); }
 .result-rule { height: 1px; margin: 23px 0 14px; background: rgba(61, 108, 79, .13); }
 .result-disclaimer { margin: 0; color: #849188; font-size: 10px; line-height: 1.65; }
 .reassurance-card { display: flex; gap: 13px; padding: 17px; }
