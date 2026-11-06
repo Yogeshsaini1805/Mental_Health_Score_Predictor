@@ -1,4 +1,6 @@
-const API_URL = 'http://127.0.0.1:8000/predict';
+const API_URL = window.location.protocol === 'file:'
+  ? 'http://127.0.0.1:8000/predict'
+  : '/predict';
 
 const form = document.querySelector('#prediction-form');
 const submitButton = document.querySelector('#submit-button');
@@ -90,7 +92,9 @@ form.addEventListener('submit', async (event) => {
     resultDescription.textContent = 'Your model-predicted score, shown out of 10. Use it as a reflection prompt, not a diagnosis.';
   } catch (error) {
     if (error instanceof TypeError) {
-      showError('Could not reach the API. Start the backend and check that it is available at http://127.0.0.1:8000.');
+      showError(window.location.protocol === 'file:'
+        ? 'Could not reach the API. Start the backend and check that it is available at http://127.0.0.1:8000.'
+        : 'Could not reach the prediction service. Check your connection and try again.');
     } else {
       showError(error.message);
     }

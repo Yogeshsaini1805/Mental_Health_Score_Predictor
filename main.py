@@ -1,11 +1,14 @@
 import joblib
 import pandas as pd
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from typing import Literal
 from fastapi.middleware.cors import CORSMiddleware
+from pathlib import Path
 
-model = joblib.load('Mental_Health_Model.pkl')
+BASE_DIR = Path(__file__).resolve().parent
+model = joblib.load(BASE_DIR / 'Mental_Health_Model.pkl')
 top_countries = ['Other','India','USA','Canada','Australia','UK','Germany','Mexico','Turkey','France']
 
 app = FastAPI()
@@ -44,9 +47,24 @@ class PredictionResponse(BaseModel):
 
 
 
-@app.get('/')
+@app.get('/', include_in_schema=False)
 def greet():
-    return {'Hii, This is Yogesh Saini'}
+    return FileResponse(BASE_DIR / 'index.html')
+
+
+@app.get('/style.css', include_in_schema=False)
+def stylesheet():
+    return FileResponse(BASE_DIR / 'style.css')
+
+
+@app.get('/script.js', include_in_schema=False)
+def frontend_script():
+    return FileResponse(BASE_DIR / 'script.js')
+
+
+@app.get('/healthz', include_in_schema=False)
+def health_check():
+    return {'status': 'ok'}
 
 
 @app.post('/predict', response_model=PredictionResponse) #6.77777
