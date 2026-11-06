@@ -1,0 +1,17 @@
+# Python environments and generated files
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local secrets and configuration
+.env
+.env.*
+!.env.example
+
+# Local model and source data
+Mental_Health_Model.pkl
+Student Social Media And Mental Health Impact.csv
+
+# Jupyter-generated files
+.ipynb_checkpoints/
